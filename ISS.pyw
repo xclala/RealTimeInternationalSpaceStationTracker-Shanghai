@@ -9,7 +9,7 @@ screen.setworldcoordinates(-180, -90, 180, 90)
 screen.bgpic("map.png")
 screen.bgcolor("black")
 screen.register_shape("isss.gif")
-screen.title("Real time ISS tracker(shenzhen)")
+screen.title("Real time ISS tracker(shanghai)")
 
 iss = turtle.Turtle()
 iss.shape("isss.gif")
@@ -40,8 +40,8 @@ for p in people:
     astronauts.sety(astronauts.ycor() - 5)
 
 # 深圳
-lat = 112.5118928 #纬度
-lon = 23.8534489 #经度
+lat = 31.22  #纬度
+lon = 121.48  #经度
 
 prediction = turtle.Turtle()
 prediction.penup()
