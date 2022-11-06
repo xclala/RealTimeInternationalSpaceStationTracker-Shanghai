@@ -1,6 +1,6 @@
 import ISS_Info
 import turtle
-from time import sleep, ctime
+from time import sleep
 import json
 import urllib.request
 
@@ -10,11 +10,11 @@ screen.setup(720, 360)
 screen.setworldcoordinates(-180, -90, 180, 90)
 screen.bgpic("map.png")
 screen.bgcolor("black")
-screen.register_shape("isss.gif")
+screen.register_shape("iss.gif")
 screen.title("Real time ISS tracker(ShangHai)")
 
 iss = turtle.Turtle()
-iss.shape("isss.gif")
+iss.shape("iss.gif")
 
 iss.penup()  # Avoid a line being drawn from initiliation to first coord
 iss.pen(pencolor="red", pensize=1)
@@ -44,13 +44,10 @@ for p in people:
     astronauts.write(p["name"] + " on: " + p["craft"], font=style)
     astronauts.sety(astronauts.ycor() - 5)
 
-url = 'http://api.open-notify.org/iss-pass.json?lat=' + \
+url = 'http://api.open-notify.org/iss-now.json?lat=' + \
     str(lat-90) + '&lon=' + str(lon)
 response = urllib.request.urlopen(url)
 result = json.loads(response.read())
-
-over = result['response'][1]['risetime']
-astronauts.write(f"ISS above Shanghai:{ctime(over)}", font=style)
 
 screen.onkey(iss.clear(), "space")  # Allow us to clear history with spacebar
 screen.listen()  # if screen gets too busy over time
